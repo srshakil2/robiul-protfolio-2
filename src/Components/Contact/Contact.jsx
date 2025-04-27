@@ -2,6 +2,7 @@ import SectionTitle from "../../Hooks/SectionTitle/SectionTitle";
 import Container from "../../Hooks/Container";
 import Swal from "sweetalert2";
 import LottieAnimation from "../LottieAnimation/LottieAnimation";
+import axios from "axios";
 
 const ContactForm = () => {
   const handelSubmit = (e) => {
@@ -16,22 +17,23 @@ const ContactForm = () => {
       email: email,
       massage: massage,
     };
-    // Todo: send this data in server is ready
-    console.log(data);
-  };
-  // if (state.succeeded && !state.submitting) {
-  //   Swal.fire({
-  //     title: "Thanks for your feedback!",
-  //     text: "I will contact you in a little while, give me some time.",
-  //     icon: "success",
-  //   });
-  //   // Wait for the resetForm Promise to resolve
-  //   const form = document.getElementById("yourFormId");
 
-  //   if (form) {
-  //     form.reset();
-  //   }
-  // }
+    axios
+      .post("http://localhost:3500/compannyData", data)
+      .then((res) => {
+        if (res.data?.insertedId) {
+          Swal.fire({
+            title: "Thanks for your feedback!",
+            text: "I will contact you in a little while, give me some time.",
+            icon: "success",
+          });
+          formsData.reset();
+        }
+      })
+      .catch((err) => {
+        // console.log(err);
+      });
+  };
 
   return (
     <Container>
