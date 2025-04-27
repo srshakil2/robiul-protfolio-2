@@ -19,7 +19,10 @@ const ContactForm = () => {
     };
 
     axios
-      .post("http://localhost:3500/compannyData", data)
+      .post(
+        "https://robiul-hasan-portfolio2-server.vercel.app/compannyData",
+        data
+      )
       .then((res) => {
         if (res.data?.insertedId) {
           Swal.fire({
