@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import Container from "../../Hooks/Container";
 import animation from "../../assets/Animation - 1702242995403.json";
 import { useLottie } from "lottie-react";
-import resume from "/Fahim-Khandakar Resume.pdf";
+import resume from "/ROBIUL HASAN1.pdf";
 
 const Home = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = resume;
-    link.download = "Fahim-Khandakar Resume.pdf";
+    link.download = "ROBIUL HASAN1.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
